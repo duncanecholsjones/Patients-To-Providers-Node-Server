@@ -12,6 +12,14 @@ var User = sequelize.define('user', {
         autoIncrement: true,
         unique: true
     },
+    username: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    password: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
     firstName: {
         type: Sequelize.STRING,
         allowNull: false
@@ -21,7 +29,7 @@ var User = sequelize.define('user', {
         allowNull: false
     },
     phone: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
     },
     email: {
         type: Sequelize.STRING,
