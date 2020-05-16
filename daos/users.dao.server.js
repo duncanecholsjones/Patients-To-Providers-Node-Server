@@ -7,17 +7,25 @@ const createUser = (user) =>
     userModel.create(user)
 
 const deleteUser = (userId) =>
-    userModel.delete(user)
-
-const findUserByCredentials = (username, password) =>
-    userModel.findOne({
-        username: username,
-        password: password
+    userModel.destroy({
+        where: {
+            userId: userId
+        }
     })
+
+const findUserByCredentials = (findUsername, findPassword) =>
+    userModel.findOne({ where: { username: findUsername, password: findPassword } })
+
+const findUserById = (profileId) =>
+    userModel.findByPk(profileId)
+// userModel.findOne({ where: { username: findUsername, password: findPassword } })
+
+
 
 module.exports = {
     findAllUsers,
     createUser,
     deleteUser,
-    findUserByCredentials
+    findUserByCredentials,
+    findUserById
 }

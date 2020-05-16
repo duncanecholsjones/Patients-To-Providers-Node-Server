@@ -15,9 +15,16 @@ sequelize
     console.error('Unable to connect to the database:', err);
   })
 
-  var db = {};
+var db = {};
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
 module.exports = db;
+
+const userModel = require('./models/users.model.server')
+const messageModel = require('./models/messages.model.server')
+const userMessageModel = require('./models/usermessages.model.server')
+
+
+

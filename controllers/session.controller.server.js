@@ -14,18 +14,20 @@ module.exports = (app) => {
             }
         })
     })
+
     // Log OUT session management
     app.post('/api/logout', (req, res) => {
         req.session.destroy()
         res.sendStatus(200)
     })
+
     // Get current user
     app.post('/api/currentUser', (req, res) => {
-        console.log(req.session['currentUser'])
         if (req.session['currentUser']) {
             res.json(req.session['currentUser'])
         } else {
             res.sendStatus(403)
         }
     })
+
 }

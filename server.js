@@ -5,7 +5,7 @@ var bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
-app.use(function (req,res, next) {
+app.use(function (req, res, next) {
     res.header('Access-Control-Allow-Origin',
         'http://localhost:3000');
     res.header('Access-Control-Allow-Headers',
@@ -18,6 +18,7 @@ app.use(function (req,res, next) {
 });
 
 var db = require('./db')
+
 // Later, when we want to do session management
 var session = require('express-session')
 app.use(session({
@@ -29,7 +30,8 @@ app.use(session({
 app.get('/', function(req, res) {
     res.send("server running")
 })
-// require('./controllers/session.controller.server')(app)
+
+require('./controllers/messages.controller.server')(app)
 require('./controllers/users.controller.server')(app)
 require('./controllers/session.controller.server')(app)
 

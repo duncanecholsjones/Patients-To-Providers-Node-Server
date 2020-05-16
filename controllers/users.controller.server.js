@@ -14,4 +14,11 @@ module.exports = (app) => {
                 res.json(actualUser)
             }) 
     })
+
+    app.post('/api/otherUser/:profileId', (req, res) => {
+        usersDao.findUserById(req.params.profileId).then(otherProfile => {
+            console.log(otherProfile)
+            res.json(otherProfile)
+        })
+    })
 }
