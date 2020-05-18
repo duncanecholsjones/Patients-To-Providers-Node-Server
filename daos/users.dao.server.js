@@ -7,11 +7,7 @@ const createUser = (user) =>
     userModel.create(user)
 
 const deleteUser = (userId) =>
-    userModel.destroy({
-        where: {
-            userId: userId
-        }
-    })
+    userModel.destroy({ where: { userId: userId } })
 
 const findUserByCredentials = (findUsername, findPassword) =>
     userModel.findOne({ where: { username: findUsername, password: findPassword } })
