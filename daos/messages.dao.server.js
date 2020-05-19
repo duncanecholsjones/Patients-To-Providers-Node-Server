@@ -32,7 +32,7 @@ const getIncomingMessagesById = async (userId) => {
     const incomingUserMessages = await userMessagesModel.findAll({ where: { toUserId: userId } })
     for (const message of incomingUserMessages) {
         message.dataValues['messageText'] = await getMessageText(message.id)
-        message.dataValues['senderInfo'] = await getUserForMessage(message.toUserId)
+        message.dataValues['senderInfo'] = await getUserForMessage(message.fromUserId)
     }
     return incomingUserMessages
 
