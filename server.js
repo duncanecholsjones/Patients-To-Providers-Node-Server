@@ -31,9 +31,11 @@ app.get('/', function(req, res) {
     res.send("server running")
 })
 
-require('./controllers/messages.controller.server')(app)
-require('./controllers/users.controller.server')(app)
 require('./controllers/session.controller.server')(app)
+require('./controllers/users.controller.server')(app)
+require('./controllers/messages.controller.server')(app)
+
+
 
 app.listen(8181)
 

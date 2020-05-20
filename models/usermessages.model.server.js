@@ -2,30 +2,29 @@ var db = require('../db'),
     sequelize = db.sequelize,
     Sequelize = db.Sequelize;
 
-const User = require('./users.model.server')
-const Message = require('./messages.model.server')
-
+const messageModel = require('./messages.model.server')
+const userModel = require('./users.model.server')
 
 var UserMessage = sequelize.define('user_message', {
     // attributes
     fromUserId: {
         type: Sequelize.INTEGER,
         references: {
-            model: User,
+            model: userModel.User,
             key: 'userId'
         }
     },
     toUserId: {
         type: Sequelize.INTEGER,
         references: {
-            model: User,
+            model: userModel.User,
             key: 'userId'
         }
     },
     messageId: {
         type: Sequelize.INTEGER,
         references: {
-            model: Message,
+            model: messageModel,
             key: 'messageId'
         }
     }

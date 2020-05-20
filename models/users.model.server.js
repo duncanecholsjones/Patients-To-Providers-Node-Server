@@ -37,7 +37,18 @@ var User = sequelize.define('user', {
         type: Sequelize.ENUM,
         values: ['PATIENT', 'PROVIDER'],
         allowNull: false
+    },
+    conditions: {
+        type: Sequelize.STRING,
+        defaultValue: "",
+        get() {
+            return this.getDataValue('conditions')
+        },
+        set(val) {
+            this.setDataValue('conditions', this.conditions.concat(val + ";"));
+        }
     }
+
 }, {
     sequelize,
     modelName: 'users'
@@ -45,9 +56,14 @@ var User = sequelize.define('user', {
 
 User.sync()
 
+const addCondition = (conditionId) =>
+    User.conditions = conditionId
+
+
+
 //sequelize.sync()
 //User.hasMany(User, {as: 'user_message', through: 'UserMessage' , foreignKey: 'userId'});
 //User.belongsToMany(User, {as: 'user_message', through: 'UserMessage', foreignKey: 'userId'})
 // sequelize.sync()
 
-module.exports = User
+module.exports = { User, addCondition }

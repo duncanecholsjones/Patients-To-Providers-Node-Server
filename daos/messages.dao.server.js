@@ -1,6 +1,7 @@
+const userModel = require('../models/users.model.server')
 const messageModel = require('../models/messages.model.server')
 const userMessagesModel = require('../models/usermessages.model.server')
-const userModel = require('../models/users.model.server')
+
 
 const sendMessage = (message) =>
     messageModel.create({ messageText: message.messageText }).then(actualMessage =>
@@ -16,7 +17,7 @@ const getMessageText = async (messageId) =>
     )
 
 const getUserForMessage = async (userId) =>
-    userModel.findByPk(userId).then(actualUser => actualUser)
+    userModel.User.findByPk(userId).then(actualUser => actualUser)
 
 const getOutgoingMessagesById = async (userId) => {
     const outgoingUserMessages = await userMessagesModel.findAll({ where: { fromUserId: userId } })

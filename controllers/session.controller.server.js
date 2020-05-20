@@ -24,7 +24,9 @@ module.exports = (app) => {
     // Get current user
     app.post('/api/currentUser', (req, res) => {
         if (req.session['currentUser']) {
-            res.json(req.session['currentUser'])
+            const user = req.session['currentUser']
+            user['password'] = '****'
+            res.json(user)
         } else {
             res.sendStatus(403)
         }
