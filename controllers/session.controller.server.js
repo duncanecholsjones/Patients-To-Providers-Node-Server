@@ -1,6 +1,7 @@
 const usersDao = require('../daos/users.dao.server')
 
 module.exports = (app) => {
+    
     // Log IN session management
     app.post('/api/login', (req, res) => {
         const username = req.body.username

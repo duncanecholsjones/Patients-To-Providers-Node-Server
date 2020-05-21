@@ -9,7 +9,7 @@ module.exports = (app) => {
             .then(results => res.json(results))
     })
 
-    // our 'Register' function
+    // Register new user
     app.post('/api/users', (req, res) => {
         const newUser = req.body;
         usersDao.createUser(newUser)
@@ -19,7 +19,7 @@ module.exports = (app) => {
             })
     })
 
-    // Update function
+    // Update user fields
     app.put('/api/user/:userId/update', (req, res) => {
         const newUser = req.body
         usersDao.updateUser(req.params.userId, newUser).then(actualUser => {
@@ -27,6 +27,15 @@ module.exports = (app) => {
             res.json(actualUser)
         })
     })
+
+    // Delete user
+    app.delete('/api/user/:userId/delete', (req, res) =>
+        usersDao.deleteUser(req.params.userId).then(response => {
+            req.session.destroy()
+            // req.session = null
+            res.sendStatus(200)
+        })
+    )
 
     // Get another user's profile
     app.post('/api/otherUser/:profileId', (req, res) => {
@@ -39,7 +48,6 @@ module.exports = (app) => {
     app.post('/api/user/conditions', (req, res) => {
         const condition = req.body;
         const user = req.session['currentUser']
-        console.log(user)
         conditionsDao.createCondition(condition).then(actualCondition =>
             res.json(usersDao.addConditionToUser(user.userId, actualCondition.apiConditionId)))
     })
