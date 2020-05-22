@@ -42,7 +42,7 @@ var User = sequelize.define('user', {
         type: Sequelize.STRING,
         defaultValue: "",
         get() {
-            return this.getDataValue('conditions')
+            return this.getDataValue('conditions').split(";")
         },
         set(val) {
             this.setDataValue('conditions', this.conditions.concat(val + ";"));

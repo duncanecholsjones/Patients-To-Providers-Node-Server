@@ -32,7 +32,6 @@ module.exports = (app) => {
     app.delete('/api/user/:userId/delete', (req, res) =>
         usersDao.deleteUser(req.params.userId).then(response => {
             req.session.destroy()
-            // req.session = null
             res.sendStatus(200)
         })
     )
@@ -51,4 +50,12 @@ module.exports = (app) => {
         conditionsDao.createCondition(condition).then(actualCondition =>
             res.json(usersDao.addConditionToUser(user.userId, actualCondition.apiConditionId)))
     })
+
+    // Get all other users with same condition as signed in user
+    app.get('/api/user/conditions/getOthers', (req, res) =>
+        // const user = req.session['currentUser']
+        usersDao.findUserById(10).then(actualUser =>
+            usersDao.findOtherUsersWithCondition(actualUser).then(actualUsers => res.json(actualUsers))
+        )
+    )
 }

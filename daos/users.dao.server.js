@@ -23,9 +23,8 @@ const deleteUser = (userId) =>
 const findUserByCredentials = (findUsername, findPassword) =>
     userModel.User.findOne({ where: { username: findUsername, password: findPassword } })
 
-const findUserById = (profileId) =>
-    userModel.User.findByPk(profileId)
-// userModel.findOne({ where: { username: findUsername, password: findPassword } })
+const findUserById = (userId) =>
+    userModel.User.findByPk(userId)
 
 const addConditionToUser = (userId, conditionId) =>
     userModel.User.findByPk(userId).then(user => {
@@ -34,6 +33,19 @@ const addConditionToUser = (userId, conditionId) =>
         return user
     })
 
+const findOtherUsersWithCondition = (user) => {
+
+    // Get a random condition from the logged in users' list of conditions
+    const conditionId = user.conditions[Math.floor(Math.random() * (user.conditions.length - 1))]
+
+    // Get all users and then filter out the ones that have the same condition as our signed in user
+    return userModel.User.findAll().then(allUsers =>
+        allUsers.filter(otherUser =>
+            (otherUser.conditions.includes(conditionId) && otherUser.userId !== user.userId)
+        )
+    )
+}
+
 module.exports = {
     findAllUsers,
     createUser,
@@ -41,5 +53,6 @@ module.exports = {
     deleteUser,
     findUserByCredentials,
     findUserById,
-    addConditionToUser
+    addConditionToUser,
+    findOtherUsersWithCondition
 }
