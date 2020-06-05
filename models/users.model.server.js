@@ -1,7 +1,12 @@
+// Author: Duncan Echols-Jones
+// 4/3/2020
+// Users model
+
 var db = require('../db'),
     sequelize = db.sequelize,
     Sequelize = db.Sequelize;
 
+// Define our User entity
 var User = sequelize.define('user', {
     // attributes
     userId: {
@@ -58,12 +63,5 @@ User.sync()
 
 const addCondition = (conditionId) =>
     User.conditions = conditionId
-
-
-
-//sequelize.sync()
-//User.hasMany(User, {as: 'user_message', through: 'UserMessage' , foreignKey: 'userId'});
-//User.belongsToMany(User, {as: 'user_message', through: 'UserMessage', foreignKey: 'userId'})
-// sequelize.sync()
 
 module.exports = { User, addCondition }

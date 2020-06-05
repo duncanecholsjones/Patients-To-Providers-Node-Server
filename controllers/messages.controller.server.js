@@ -1,3 +1,8 @@
+// Author: Duncan Echols-Jones
+// 4/3/2020
+// Messages controller
+
+
 const messagesDao = require('../daos/messages.dao.server')
 
 module.exports = (app) => {

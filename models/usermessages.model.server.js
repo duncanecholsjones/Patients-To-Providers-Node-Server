@@ -1,3 +1,7 @@
+// Author: Duncan Echols-Jones
+// 4/3/2020
+// User-messages model
+
 var db = require('../db'),
     sequelize = db.sequelize,
     Sequelize = db.Sequelize;
@@ -5,6 +9,7 @@ var db = require('../db'),
 const messageModel = require('./messages.model.server')
 const userModel = require('./users.model.server')
 
+// Define our User-Message entity
 var UserMessage = sequelize.define('user_message', {
     // attributes
     fromUserId: {

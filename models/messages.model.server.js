@@ -1,7 +1,12 @@
+// Author: Duncan Echols-Jones
+// 4/3/2020
+// Messages model
+
 var db = require('../db'),
     sequelize = db.sequelize,
     Sequelize = db.Sequelize;
 
+// Define our Message entity
 var Message = sequelize.define('message', {
     // attributes
     messageId: {

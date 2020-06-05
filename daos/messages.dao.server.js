@@ -1,3 +1,7 @@
+// Author: Duncan Echols-Jones
+// 4/3/2020
+// Messages DAO
+
 const userModel = require('../models/users.model.server')
 const messageModel = require('../models/messages.model.server')
 const userMessagesModel = require('../models/usermessages.model.server')

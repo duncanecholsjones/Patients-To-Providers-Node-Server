@@ -1,3 +1,7 @@
+// Author: Duncan Echols-Jones
+// 4/3/2020
+// Users controller
+
 const usersDao = require('../daos/users.dao.server')
 const conditionsDao = require('../daos/conditions.dao.server')
 
@@ -52,10 +56,10 @@ module.exports = (app) => {
     })
 
     // Get all other users with same condition as signed in user
-    app.get('/api/user/conditions/getOthers', (req, res) =>
-        // const user = req.session['currentUser']
-        usersDao.findUserById(10).then(actualUser =>
+    app.get('/api/user/conditions/getOthers', (req, res) => {
+        const user = req.session['currentUser']
+        return usersDao.findUserById(user.userId).then(actualUser =>
             usersDao.findOtherUsersWithCondition(actualUser).then(actualUsers => res.json(actualUsers))
-        )
+        )}
     )
 }

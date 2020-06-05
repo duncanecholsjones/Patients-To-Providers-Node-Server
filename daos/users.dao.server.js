@@ -1,3 +1,7 @@
+// Author: Duncan Echols-Jones
+// 4/3/2020
+// Users DAO
+
 const userModel = require('../models/users.model.server')
 
 const findAllUsers = () =>
@@ -34,7 +38,6 @@ const addConditionToUser = (userId, conditionId) =>
     })
 
 const findOtherUsersWithCondition = (user) => {
-
     // Get a random condition from the logged in users' list of conditions
     const conditionId = user.conditions[Math.floor(Math.random() * (user.conditions.length - 1))]
 

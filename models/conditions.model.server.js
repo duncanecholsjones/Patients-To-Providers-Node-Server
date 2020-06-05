@@ -1,7 +1,12 @@
+// Author: Duncan Echols-Jones
+// 4/3/2020
+// Conditions model
+
 var db = require('../db'),
     sequelize = db.sequelize,
     Sequelize = db.Sequelize;
 
+// Define our Condition entity
 var Condition = sequelize.define('condition', {
     // attributes
     conditionId: {
