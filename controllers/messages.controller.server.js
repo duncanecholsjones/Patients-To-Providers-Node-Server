@@ -1,8 +1,8 @@
 // Author: Duncan Echols-Jones
-// 4/3/2020
+// 2/18/2021
 // Messages controller
 
-
+// Establish message webservices
 const messagesDao = require('../daos/messages.dao.server')
 
 module.exports = (app) => {

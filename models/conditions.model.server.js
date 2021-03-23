@@ -1,7 +1,8 @@
 // Author: Duncan Echols-Jones
-// 4/3/2020
+// 2/18/2021
 // Conditions model
 
+// Establish our Condition model
 var db = require('../db'),
     sequelize = db.sequelize,
     Sequelize = db.Sequelize;

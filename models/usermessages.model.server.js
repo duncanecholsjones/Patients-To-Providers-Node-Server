@@ -1,7 +1,8 @@
 // Author: Duncan Echols-Jones
-// 4/3/2020
+// 2/18/2021
 // User-messages model
 
+// Establish our usermessage model, which persists messages from sender to receiver users
 var db = require('../db'),
     sequelize = db.sequelize,
     Sequelize = db.Sequelize;

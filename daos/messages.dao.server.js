@@ -1,11 +1,11 @@
 // Author: Duncan Echols-Jones
-// 4/3/2020
+// 2/18/2021
 // Messages DAO
 
+// Establish our Messages data access object
 const userModel = require('../models/users.model.server')
 const messageModel = require('../models/messages.model.server')
 const userMessagesModel = require('../models/usermessages.model.server')
-
 
 const sendMessage = (message) =>
     messageModel.create({ messageText: message.messageText }).then(actualMessage =>
@@ -40,9 +40,7 @@ const getIncomingMessagesById = async (userId) => {
         message.dataValues['senderInfo'] = await getUserForMessage(message.fromUserId)
     }
     return incomingUserMessages
-
 }
-
 
 module.exports = {
     sendMessage,

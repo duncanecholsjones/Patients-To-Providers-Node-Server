@@ -1,7 +1,8 @@
 // Author: Duncan Echols-Jones
-// 4/3/2020
+// 2/18/2021
 // Users controller
 
+// Establish our User controller and expose web service endpoints
 const usersDao = require('../daos/users.dao.server')
 const conditionsDao = require('../daos/conditions.dao.server')
 

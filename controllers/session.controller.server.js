@@ -1,7 +1,8 @@
 // Author: Duncan Echols-Jones
-// 4/3/2020
+// 2/18/2021
 // Session controller
 
+// Establish our Session endpoints
 const usersDao = require('../daos/users.dao.server')
 
 module.exports = (app) => {

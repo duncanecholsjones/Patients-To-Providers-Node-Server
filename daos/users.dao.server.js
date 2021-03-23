@@ -1,7 +1,8 @@
 // Author: Duncan Echols-Jones
-// 4/3/2020
+// 2/18/2021
 // Users DAO
 
+// Establish our User data access object
 const userModel = require('../models/users.model.server')
 
 const findAllUsers = () =>

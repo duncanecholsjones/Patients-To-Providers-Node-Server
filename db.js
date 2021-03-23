@@ -1,10 +1,11 @@
 // Author: Duncan Echols-Jones
-// 4/3/2020
+// 2/18/2021
 // Database definition 
 
+// Initialize Sequelize, using mySQL as our database connection
 const Sequelize = require('sequelize');
 
-const sequelize = new Sequelize('cs5610_sp20', 'cs5610', 'cs5610', {
+const sequelize = new Sequelize('patients_to_providers_db', 'cs5610', 'pass', {
   host: 'localhost',
   dialect: 'mysql'
 });
@@ -23,6 +24,7 @@ var db = {};
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
+// Export our new mySQL database
 module.exports = db;
 
 // Load our entities
